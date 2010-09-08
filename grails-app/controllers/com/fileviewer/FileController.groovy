@@ -16,19 +16,14 @@ class FileController {
 		Boolean isFile = true
 		if (file.exists()) {
 			if ( file.isFile()) {
-				if(FileViewerUtils.isText(file.name)) {
-					String fileContents = getFileContents(file)
-					message = g.render(template: "fileDetails", model: [fileContents: fileContents, filePath: file.absolutePath])
-				} else {
-					forward(action:'downloadFile', params:params)
-					return
-				}
+				String fileContents = getFileContents(file)
+				message = g.render(template: "/file/fileDetails", model: [fileContents: fileContents, filePath: file.absolutePath], plugin:'fileViewer')
 			} else {
 				List<String> locations = []
 				file.eachFile{File subFile->
 					locations << subFile.absolutePath
 				}
-				message = g.render(template: "fileList", model: [locations:locations])
+				message = g.render(template: "/file/fileList", model: [locations:locations], plugin:'fileViewer')
 				isFile = false
 			}
 		}

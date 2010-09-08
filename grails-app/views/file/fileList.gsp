@@ -9,7 +9,7 @@
 <br/><strong>Please click on the links below to view detailed reports:</strong><br/><br/>
 <div id="mainContainer">
 	<div id="left-container" style="width:30%; float:left;">
-		<g:render template="fileList" model="[locations:locations]"/>
+		<g:render template="fileList" model="[locations:locations]" plugin='fileViewer'/>
 	</div>
 	<div id="right-container" style="width:69%; float:right;border:1px black solid;padding:5px;">
 		Clicking on the file in left will show the contents here
