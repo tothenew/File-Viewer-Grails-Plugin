@@ -1,8 +1,8 @@
-<ol style="padding:2px;">
+<ol>
 	<g:each in="${locations}" var="location">
 		<li>
 			<a class="showReportLink" href="${createLink(action: 'showDetails', params: [filePath: location])}">${location}</a>
-			<div class="children"></div>
+			<div class="children" style="padding:5px;"></div>
 		</li>
 	</g:each>
 </ol>
