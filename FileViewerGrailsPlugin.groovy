@@ -42,10 +42,6 @@ Brief description of the plugin.
 
     def doWithApplicationContext = { applicationContext ->
         // TODO Implement post initialization spring config (optional)
-		application.controllerClasses*.metaClass*.myMethodTest = {Closure callable ->
-		  println "This is from the plugin"
-		}
-
     }
 
     def onChange = { event ->
