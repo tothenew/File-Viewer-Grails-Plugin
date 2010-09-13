@@ -9,4 +9,5 @@ package com.fileviewer
  */
 class FileLocations {
 	List<String> locations
+    Integer linesCount
 }

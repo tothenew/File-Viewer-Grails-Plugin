@@ -33,6 +33,7 @@ Brief description of the plugin.
 		def config = application.config.grails.fileViewer
 		fileLocations(FileLocations) {
 			locations = config.locations
+			linesCount = config.linesCount
 		}
 	}
 
