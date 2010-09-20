@@ -2,7 +2,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="layout" content="none"/>
-	<g:javascript library="jquery" plugin="jquery" />
 	<title>File List</title>
 </head>
 <body>
@@ -15,26 +14,5 @@
 		<g:render template="/file/fileDetails" model="[fileContents: fileContents, filePath: filePath]" plugin='fileViewer'/>
 	</div>
 </div>
-<script type="text/javascript">
-	function bindOnClick() {
-		jQuery(".showReportLink").click(function() {
-			var url = jQuery(this).attr('href');
-			var element = jQuery(this);
-			jQuery.get(url, {}, function(data) {
-				if (data.message) {
-					if (data.isFile) {
-						jQuery("#right-container").html(data.message);
-					} else {
-						jQuery(element).parent().find('div.children').html(data.message);
-					}
-				}
-			});
-			return false;
-		});
-	}
-//	jQuery(document).ready(function() {
-//		return bindOnClick();
-//	});
-</script>
 </body>
 </html>
