@@ -1,4 +1,4 @@
-package com.fileviewer
+package org.grails.plugins.fileviewer
 
 /**
  * Created by IntelliJ IDEA.

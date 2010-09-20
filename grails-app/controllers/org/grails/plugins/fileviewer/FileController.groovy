@@ -1,6 +1,6 @@
-package com.fileviewer
+package org.grails.plugins.fileviewer
 
-import grails.converters.JSON
+import org.grails.plugins.fileviewer.FileViewerUtils
 
 class FileController {
 

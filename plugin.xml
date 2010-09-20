@@ -10,7 +10,7 @@ Brief description of the plugin.
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>UrlMappings</resource>
-    <resource>com.fileviewer.FileController</resource>
+    <resource>org.grails.plugins.fileviewer.FileController</resource>
   </resources>
   <dependencies />
   <behavior />
