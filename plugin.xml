@@ -12,8 +12,6 @@ Brief description of the plugin.
     <resource>UrlMappings</resource>
     <resource>com.fileviewer.FileController</resource>
   </resources>
-  <dependencies>
-    <plugin name='jquery' version='1.4.2.5 &gt; *' />
-  </dependencies>
+  <dependencies />
   <behavior />
 </plugin>
