@@ -22,5 +22,5 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
-grails.serverURL = "http://localhost:8080/${appName}"
+
 

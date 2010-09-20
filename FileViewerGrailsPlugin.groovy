@@ -1,4 +1,4 @@
-import com.fileviewer.FileLocations
+import org.codehaus.groovy.grails.commons.DefaultGrailsApplication
 
 class FileViewerGrailsPlugin {
     // the plugin version
@@ -31,9 +31,9 @@ Brief description of the plugin.
     def doWithSpring = {
 		// TODO Implement runtime spring config (optional)
 		def config = application.config.grails.fileViewer
-		fileLocations(FileLocations) {
-			locations = config.locations
-			linesCount = config.linesCount
+		fileLocations(com.fileviewer.FileLocations) {
+			locations = config.locations ?: [System.getProperty("java.io.tmpdir")]
+			linesCount = config.linesCount ?: 300
 		}
 	}
 

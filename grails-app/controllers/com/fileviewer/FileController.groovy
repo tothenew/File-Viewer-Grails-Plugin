@@ -7,28 +7,29 @@ class FileController {
 	def fileLocations
 
 	def index = {
-		render(view: 'fileList', model: [locations: fileLocations.locations])
-	}
-
-	def showDetails = {
-		File file = new File(params.filePath)
-		String message = ""
-		Boolean isFile = true
-		if (file.exists()) {
-			if ( file.isFile()) {
-				String fileContents = getFileContents(file)
-				message = g.render(template: "/file/fileDetails", model: [fileContents: fileContents, filePath: file.absolutePath], plugin:'fileViewer')
-			} else {
-				List<String> locations = []
-				file.eachFile{File subFile->
-					locations << subFile.absolutePath
+		Map model = [locations:fileLocations.locations]
+		if (params.filePath) {
+			File file = new File(params.filePath)
+			if (file.exists()) {
+				if ( file.isFile()) {
+					List locations = getSubFiles(file.parentFile)
+					String fileContents = getFileContents(file)
+					model= [locations: locations, fileContents: fileContents, filePath: file.absolutePath]
+				} else {
+					List locations = getSubFiles(file)
+					model= [locations:locations]
 				}
-				message = g.render(template: "/file/fileList", model: [locations:locations], plugin:'fileViewer')
-				isFile = false
 			}
 		}
-		Map model = [message:message,isFile:isFile]
-		render model as JSON
+		render(view: "/file/fileList", model: model, plugin:'fileViewer')
+	}
+
+	private List getSubFiles(File file) {
+		List<String> locations = []
+		file.eachFile {File subFile ->
+			locations << subFile.absolutePath
+		}
+		return locations
 	}
 
 

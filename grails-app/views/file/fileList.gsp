@@ -12,8 +12,7 @@
 		<g:render template="fileList" model="[locations:locations]" plugin='fileViewer'/>
 	</div>
 	<div id="right-container" style="width:69%; float:right;border:1px black solid;padding:5px;">
-		Clicking on the file in left will show the contents here
-
+		<g:render template="/file/fileDetails" model="[fileContents: fileContents, filePath: filePath]" plugin='fileViewer'/>
 	</div>
 </div>
 <script type="text/javascript">
@@ -33,9 +32,9 @@
 			return false;
 		});
 	}
-	jQuery(document).ready(function() {
-		return bindOnClick();
-	});
+//	jQuery(document).ready(function() {
+//		return bindOnClick();
+//	});
 </script>
 </body>
 </html>
