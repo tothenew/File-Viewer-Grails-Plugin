@@ -19,6 +19,10 @@ class FileController {
 					List locations = getSubFiles(file)
 					model= [locations:locations]
 				}
+				if(!fileLocations.locations.contains(file.absolutePath)){
+					model['prevLocation'] = file.getParentFile().absolutePath
+				}
+				model['showBackLink'] = true
 			}
 		}
 		render(view: "/file/fileList", model: model, plugin:'fileViewer')

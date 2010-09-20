@@ -6,6 +6,11 @@
 </head>
 <body>
 <br/><strong>Please click on the links below to view detailed reports:</strong><br/><br/>
+<g:if test="${showBackLink}">
+	<div id="backLink">
+		<a class="showReportLink" href="${createLink(action: 'index', params: [filePath: prevLocation])}">Back</a>
+	</div>
+</g:if>
 <div id="mainContainer">
 	<div id="left-container" style="width:30%; float:left;">
 		<g:render template="fileList" model="[locations:locations]" plugin='fileViewer'/>
