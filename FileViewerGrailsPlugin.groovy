@@ -13,12 +13,12 @@ class FileViewerGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "Himanshu Seth, Fabien Benichou"
+    def authorEmail = "himanshu@intelligrape.com, fabien.benichou@gmail.com"
     def title = "Plugin summary/headline"
     def description = '''\\
-Brief description of the plugin.
+File Viewer Grails plugin provides a user friendly way for viewing folders and files on the system. The most common use-case is to see the logs on the server.
+Documentation available at http://github.com/IntelliGrape/File-Viewer-Grails-Plugin/wiki
 '''
 
     // URL to the plugin's documentation
