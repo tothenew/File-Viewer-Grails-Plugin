@@ -1,4 +1,4 @@
-<plugin name='file-viewer' version='0.1' grailsVersion='1.3.3 &gt; *'>
+<plugin name='file-viewer' version='0.1' grailsVersion='1.1 &gt; *'>
   <author>Himanshu Seth, Fabien Benichou</author>
   <authorEmail>himanshu@intelligrape.com, fabien.benichou@gmail.com</authorEmail>
   <title>File Viewer Grails plugin</title>
