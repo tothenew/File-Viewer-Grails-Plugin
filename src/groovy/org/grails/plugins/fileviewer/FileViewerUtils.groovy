@@ -1,7 +1,18 @@
 package org.grails.plugins.fileviewer
 
-class FileViewerUtils {
+/**
+ * @author Himanshu Seth (himanshu@intelligrape.com)
+ * @author Fabien Benichou (fabien.benichou@gmail.com)
+ */
 
+class FileViewerUtils {
+	/**
+	 * getMimeContentType   gets mime content type depending on the extension of file name
+	 *
+	 * @param extension e.g. 'asc'
+	 *
+	 * @return the mime content type e.g. 'text/plain'
+	 */
 	public static String getMimeContentType(String extension) {
 		Map<String, String> mimeTypes = ['ai': 'application/postscript',
 				'aif': 'audio/x-aiff',
@@ -176,12 +187,4 @@ class FileViewerUtils {
 				'zip': 'application/zip']
 		return mimeTypes.get(extension.toLowerCase())
 	}
-
-	public static boolean isText(String fileName) {
-		String extension = (fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length())).toLowerCase()
-		String mimeType = getMimeContentType(extension)
-		return ((mimeType) && (mimeType?.startsWith("text")))
-	}
-
-
 }

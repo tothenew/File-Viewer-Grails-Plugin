@@ -2,13 +2,17 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="layout" content="none"/>
-	<title>File List</title>
+	<title><g:message code="default.page.title.label" default="File List" /></title>
 </head>
 <body>
-<br/><strong>Please click on the links below to view detailed reports:</strong><br/><br/>
+<br/><strong>
+	<g:message code="default.page.body.detail" default="Please click on the links below to view detailed reports:" />
+</strong><br/><br/>
 <g:if test="${showBackLink}">
 	<div id="backLink">
-		<a class="showReportLink" href="${createLink(action: 'index', params: [filePath: prevLocation])}">Back</a>
+		<a class="showReportLink" href="${createLink(action: 'index', params: [filePath: prevLocation])}">
+			<g:message code="default.link.back.label" default="Back" />	
+		</a>
 	</div>
 </g:if>
 <div id="mainContainer">

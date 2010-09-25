@@ -1,33 +1,56 @@
 package org.grails.plugins.fileviewer
 
-import org.grails.plugins.fileviewer.FileViewerUtils
+/**
+ * @author Himanshu Seth (himanshu@intelligrape.com)
+ * @author Fabien Benichou (fabien.benichou@gmail.com)
+ */
 
 class FileController {
 
 	def fileLocations
 
 	def index = {
-		Map model = [locations:fileLocations.locations]
+		Map model = [locations: fileLocations.locations]
 		if (params.filePath) {
 			File file = new File(params.filePath)
 			if (file.exists()) {
-				if ( file.isFile()) {
+				if (file.isFile()) {
 					List locations = getSubFiles(file.parentFile)
 					String fileContents = getFileContents(file)
-					model= [locations: locations, fileContents: fileContents, filePath: file.absolutePath]
+					model = [locations: locations, fileContents: fileContents, filePath: file.absolutePath]
 				} else {
 					List locations = getSubFiles(file)
-					model= [locations:locations]
+					model = [locations: locations]
 				}
-				if(!fileLocations.locations.contains(file.absolutePath)){
+				if (!fileLocations.locations.contains(file.absolutePath)) {
 					model['prevLocation'] = file.getParentFile().absolutePath
 				}
 				model['showBackLink'] = true
 			}
 		}
-		render(view: "/file/fileList", model: model, plugin:'fileViewer')
+		render(view: "/file/fileList", model: model, plugin: 'fileViewer')
 	}
 
+	def downloadFile = {
+		File file = new File(params.filePath)
+		byte[] assetContent = file.readBytes();
+		response.setContentLength(assetContent.size())
+		response.setHeader("Content-disposition", "attachment; filename=${file.name}")
+		String contentType = FileViewerUtils.getMimeContentType(file.name.tokenize(".").last().toString())
+		response.setContentType(contentType)
+		OutputStream out = response.getOutputStream()
+		out.write(assetContent)
+		out.flush()
+		out.close()
+	}
+
+	/**
+	 * getSubFiles  gets list of subfiles
+	 *
+	 * @param file
+	 *
+	 * @return List
+	 */
 	private List getSubFiles(File file) {
 		List<String> locations = []
 		file.eachFile {File subFile ->
@@ -36,9 +59,15 @@ class FileController {
 		return locations
 	}
 
-
+	/**
+	 * getFileContents  reads file line by line
+	 *
+	 * @param file
+	 *
+	 * @return file contets formatted by <br/> html tag
+	 */
 	private def getFileContents(File file) {
-		String fileContents;
+		String fileContents = "";
 		List<String> contents = file.text.readLines()
 		if (contents.size() > fileLocations.linesCount) {
 			int startIndex = contents.size() - (fileLocations.linesCount + 1)
@@ -48,18 +77,5 @@ class FileController {
 			fileContents = contents.join("<br/>")
 		}
 		return fileContents
-	}
-
-	def downloadFile = {
-		File file = new File(params.filePath)
-		byte[] assetContent =file.readBytes();
-		response.setContentLength(assetContent.size())
-		response.setHeader("Content-disposition", "attachment; filename=${file.name}")
-		String contentType = FileViewerUtils.getMimeContentType(file.name.tokenize(".").last().toString())
-		response.setContentType(contentType)
-		OutputStream out = response.getOutputStream()
-		out.write(assetContent)
-		out.flush()
-		out.close()
 	}
 }
