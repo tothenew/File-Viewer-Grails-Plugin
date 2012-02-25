@@ -10,6 +10,11 @@ class FileLocations {
     Integer linesCount
     Boolean areDoubleDotsAllowedInFilePath = false
 
+    /**
+     *
+     * @param filePath
+     * @return whether the path provided should be displayed or not
+     */
     boolean isValidPath(String filePath) {
         boolean isValid = this.locations.any {filePath.startsWith(it)}
         if(isValid && !areDoubleDotsAllowedInFilePath) {
