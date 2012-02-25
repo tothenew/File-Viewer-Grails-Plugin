@@ -13,7 +13,7 @@ class FileController {
         Map model = [locations: fileLocations.locations]
         if (params.filePath) {
             File file = new File(params.filePath)
-            if (file.exists()) {
+            if (fileLocations.isValidPath(params.filePath) && file.exists()) {
                 if (file.isFile()) {
                     List locations = getSubFiles(file.parentFile)
                     String fileContents = getFileContents(file)
@@ -26,6 +26,8 @@ class FileController {
                     model['prevLocation'] = file.getParentFile()?.absolutePath
                 }
                 model['showBackLink'] = true
+            } else {
+                model.errorMessage = message(code: 'default.path.invalid.message')
             }
         }
         render(view: "/file/fileList", model: model, plugin: 'fileViewer')

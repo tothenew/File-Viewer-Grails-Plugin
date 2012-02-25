@@ -6,6 +6,17 @@ package org.grails.plugins.fileviewer
  */
 
 class FileLocations {
-	List<String> locations
+    List<String> locations
     Integer linesCount
+    Boolean areDoubleDotsAllowedInFilePath = false
+
+    boolean isValidPath(String filePath) {
+        boolean isValid = this.locations.any {filePath.startsWith(it)}
+        if(isValid && !areDoubleDotsAllowedInFilePath) {
+            isValid = !filePath.contains("..")
+        }
+        isValid
+    }
+
+
 }
