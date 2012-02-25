@@ -32,6 +32,7 @@ Documentation available at http://github.com/IntelliGrape/File-Viewer-Grails-Plu
 		fileLocations(org.grails.plugins.fileviewer.FileLocations) {
 			locations = config.locations ?: [System.getProperty("java.io.tmpdir")]
 			linesCount = config.linesCount ?: 300
+            areDoubleDotsAllowedInFilePath = config.areDoubleDotsAllowedInFilePath ?: false
 		}
 	}
 
