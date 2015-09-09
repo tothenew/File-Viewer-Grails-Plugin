@@ -1,5 +1,8 @@
-File-Viewer-Grails-Plugin.iml
-File-Viewer-Grails-Plugin.ipr
-File-Viewer-Grails-Plugin.iws
-target
-File-Viewer-Grails-Plugin-grailsPlugins.iml
+*.iml
+*.ipr
+*.iws
+*.log
+.DS_Store
+/.gradle
+/.idea
+/build

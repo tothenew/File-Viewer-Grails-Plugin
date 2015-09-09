@@ -26,10 +26,10 @@
         return code
     }
     $(document).ready(
-            function() {
-                var code = $('pre.codeExample>code').html();
-                var formattedCode = encodeAsCode(code);
-                $('pre.codeExample>code').html(formattedCode);
-            }
+        function() {
+            var code = $('pre.codeExample>code').html();
+            var formattedCode = encodeAsCode(code);
+            $('pre.codeExample>code').html(formattedCode);
+        }
     );
 </script>
